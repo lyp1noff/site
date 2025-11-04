@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lyp1noff.com/sitemap-index.xml

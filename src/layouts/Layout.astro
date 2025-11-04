@@ -1,0 +1,51 @@
+---
+import "../styles/global.css";
+import { MetaDefaults, SchemaOrgJSON } from "../lib/SEO.ts";
+
+const {
+  title = MetaDefaults.title,
+  description = MetaDefaults.description,
+  url = MetaDefaults.url,
+  image = MetaDefaults.image,
+} = Astro.props;
+---
+
+<html lang="en" class="bg-black font-sans text-white">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#000000" />
+    <link rel="canonical" href={url} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="lyp1noff" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={`${url}${image}`} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${url}${image}`} />
+    <meta name="twitter:creator" content="@lyp1noff" />
+
+    <!-- Favicon & Manifest -->
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Structured Data (schema.org) -->
+    {SchemaOrgJSON && <script type="application/ld+json" set:html={SchemaOrgJSON} is:inline />}
+  </head>
+
+  <body class="flex min-h-screen flex-col">
+    <slot />
+  </body>
+</html>
