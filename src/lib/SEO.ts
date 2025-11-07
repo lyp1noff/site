@@ -36,10 +36,3 @@ export const SchemaOrg = {
 };
 
 export const SchemaOrgJSON = JSON.stringify(SchemaOrg);
-
-export const MetaDefaults = {
-  title: `${SEO.name} — ${SEO.jobTitle}`,
-  description: SEO.description,
-  url: SEO.baseUrl,
-  image: SEO.imagePath,
-};

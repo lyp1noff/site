@@ -1,12 +1,13 @@
 ---
 import "../styles/global.css";
-import { MetaDefaults, SchemaOrgJSON } from "../lib/SEO.ts";
+import { SchemaOrgJSON, SEO } from "../lib/SEO.ts";
+import AuroraBackground from "../components/AuroraBackground.astro";
 
 const {
-  title = MetaDefaults.title,
-  description = MetaDefaults.description,
-  url = MetaDefaults.url,
-  image = MetaDefaults.image,
+  title = `${SEO.name} — ${SEO.jobTitle}`,
+  description = SEO.description,
+  url = SEO.baseUrl,
+  image = SEO.imagePath,
 } = Astro.props;
 ---
 
@@ -16,12 +17,11 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#000000" />
     <link rel="canonical" href={url} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="lyp1noff" />
+    <meta property="og:site_name" content={SEO.siteName} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url} />
@@ -43,9 +43,23 @@ const {
 
     <!-- Structured Data (schema.org) -->
     {SchemaOrgJSON && <script type="application/ld+json" set:html={SchemaOrgJSON} is:inline />}
-  </head>
+
+    <script client:load>
+      document.addEventListener("mousemove", (e) => {
+        document.querySelectorAll(".btn").forEach((el) => {
+          const btn = el instanceof HTMLElement ? el : null;
+          if (!btn) return;
+
+          const rect = btn.getBoundingClientRect();
+          btn.style.setProperty("--x", `${e.clientX - rect.left}px`);
+          btn.style.setProperty("--y", `${e.clientY - rect.top}px`);
+        });
+      });
+    </script></head
+  >
 
   <body class="flex min-h-screen flex-col">
+    <AuroraBackground />
     <slot />
   </body>
 </html>

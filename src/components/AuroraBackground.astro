@@ -1,0 +1,33 @@
+<div class="aurora-bg"></div>
+
+<style>
+  .aurora-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background: #000;
+  }
+
+  .aurora-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 50% 60%, rgba(120, 90, 255, 0.22), rgba(0, 0, 0, 0.9) 60%),
+      radial-gradient(circle at 55% 40%, rgba(90, 60, 200, 0.24), rgba(0, 0, 0, 0.95) 65%);
+    filter: blur(120px) saturate(130%);
+    opacity: 0.9;
+    animation: aurora-move 10s ease-in-out infinite alternate;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  }
+
+  @keyframes aurora-move {
+    0% {
+      transform: translateY(-4%) scale(1.05);
+    }
+    100% {
+      transform: translateY(4%) scale(1.05);
+    }
+  }
+</style>
