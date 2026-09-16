@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "site",
+  "compatibility_date": "2026-09-16",
+  "assets": {
+    "directory": "./dist"
+  },
+  "workers_dev": false,
+  "preview_urls": false
+}

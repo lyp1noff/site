@@ -1,17 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { SEO } from "../lib/SEO.ts";
 ---
 
 <Layout>
   <main class="mx-auto max-w-3xl px-6 py-16 text-center">
-    <h1 class="mb-10 text-4xl font-bold md:text-5xl">👋 Hey, I'm Andrii</h1>
+    <h1 class="mb-6 text-5xl font-bold tracking-tight">{SEO.name}</h1>
+    <p class="mb-6 text-lg text-gray-400">{SEO.jobTitle} • MSc Data Science</p>
 
-    <p class="mb-10 text-lg leading-relaxed text-gray-300 md:text-xl">
-      DevOps & Software Engineer focusing on automation, observability, and backend systems.<br /><br />
-      Currently pursuing MSc in Data Science at the University of Surrey.
-    </p>
+    <!--<p class="mb-10 text-lg leading-relaxed text-gray-300 md:text-xl">-->
+    <!--  DevOps & Software Engineer focusing on automation, observability, and backend systems.<br /><br />-->
+    <!--  Currently pursuing MSc in Data Science at the University of Surrey.-->
+    <!--</p>-->
 
-    <div class="mb-12 flex flex-col justify-center gap-4 md:flex-row">
+    <div class="flex flex-col justify-center gap-4 md:flex-row">
       <a href="https://github.com/lyp1noff" class="btn" target="_blank" rel="noopener noreferrer"> GitHub </a>
       <a href="https://linkedin.com/in/paziuka" class="btn" target="_blank" rel="noopener noreferrer"> LinkedIn </a>
       <a href="mailto:andrii@lyp1noff.com" class="btn"> Email </a>
